@@ -46,7 +46,7 @@ function App() {
     if (e.target.id !== "") setCurrentColor(e.target.id)
   }
 
-  // handle color change
+  // isolate effects on currentColor change
   useEffect( () => {
       // update color history 
       setColorHistory(updateColorHistory);
@@ -58,16 +58,18 @@ function App() {
   );
 
 
+  // isolate effects on currentRound change
   useEffect( () => {
-    if (currentRound < 10) {
-      
-
-    } 
-    else {
-      currentCode === computerCode ? alert('you won!') : alert('you lost :(');
-      window.location.reload();
-    }
-  })
+      if (currentRound < 10) {
+        
+      } 
+      else {
+        currentCode === computerCode ? alert('you won!') : alert('you lost :(');
+        window.location.reload();
+      }
+    },
+    [currentRound]
+  )
 
   return (
     <div className="App">
@@ -75,8 +77,14 @@ function App() {
       <p>Try to guess the pattern, in both order and color, within ten turns. After submitting a row, a small black peg is placed for each code peg from the guess which is correct in both color and position. A white peg indicates the existence of a correct color code peg placed in the wrong position. More info on <a href="https://en.wikipedia.org/wiki/Mastermind_(board_game)">Wikipedia</a>.</p>
       <Colors handleColorChoice={handleColorChoice}/> 
       <div className='buttons'> 
-        <button disabled={currentCode.includes(null)} onClick={() => setCurrentCode([null, null, null, null]) }> Clear selection </button>
-        <button disabled={currentCode.includes(null)} onClick={() => {setCurrentRound(currentRound+1); setCurrentCode([null, null, null, null])} }> Submit </button>
+        <button disabled={currentCode.includes(null)} 
+          onClick={() => {setCurrentColor(''); setColorHistory([null, null, null, null]); setCurrentCode([null, null, null, null])} }> 
+          Clear selection 
+        </button>
+        <button disabled={currentCode.includes(null)} 
+          onClick={() => {setCurrentRound(currentRound+1); setCurrentCode([null, null, null, null])} }> 
+          Submit 
+        </button>
       </div>      
       <GameArea currentCode={currentCode} rounds={rounds} currentRound={currentRound} pegs={pegs} />
     </div>
