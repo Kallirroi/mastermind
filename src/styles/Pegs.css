@@ -1,0 +1,27 @@
+.pegs {
+	display: inline-block;
+	vertical-align: top;
+	opacity: 0.4;
+}
+
+.pegs.active {
+	opacity: 1;
+}
+
+.peg {
+	background-color: #aaa;
+	border: 1px solid #aaa;
+	width: 6px;
+	height: 6px;
+	display: inline-block;
+	margin: 0 4px 4px 4px;
+	padding: 0;
+	border-radius: 6px;
+}
+
+.peg.white {
+	background-color: #fff !important;
+}
+.peg.black {
+	background-color: #000;
+}

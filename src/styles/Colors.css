@@ -1,0 +1,19 @@
+.colors {
+	display: block;
+	vertical-align: top;
+	height: 20px;
+	text-align: center;
+}
+
+.color {
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	margin-right: 10px;
+	border-radius: 3px;
+}
+
+.color:hover {
+	cursor: pointer;
+	filter: saturate(2);
+}
