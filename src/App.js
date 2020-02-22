@@ -18,41 +18,49 @@ function App() {
   // initialize current round
   let [currentRound, setCurrentRound] = useState(0);
 
+  let [currentColor, setCurrentColor] = useState('');
+
   // initialize colorHistory
   let  [colorHistory, setColorHistory]=useState([null, null, null, null]);
   
   // initialize currentCode
-  let  [currentCode, setCurrentCode]=useState(colorHistory);
-  console.log(currentCode)
+  let  [currentCode, setCurrentCode]=useState([null, null, null, null]);
 
   // initialize pegs
   let [pegs, setPegs] = useState([null, null, null, null])
 
-  const updateColorHistory = (color) => {
-    debugger;
-    return colorHistory.push(color);
+  const updateColorHistory = () => {
+    if (colorHistory !== undefined && currentColor !== "") colorHistory.push(currentColor);
+    return colorHistory
   } 
 
   const updateCurrentCode = () => {
-    let _colorHistory = colorHistory;
-    return _colorHistory.splice(1,4);
+    let lastFour=colorHistory.slice(-4).reverse()
+    console.log(lastFour)
+    if (lastFour.length===4) return lastFour;
   } 
-
 
   // detect color clicks on the Colors comp level
   const handleColorChoice = (e) => {
     // push one letter to currentCode and always keep the last four
-    setColorHistory(updateColorHistory(e.target.id))
-    setCurrentCode(updateCurrentCode);
-    
-    console.log(colorHistory, currentCode)
+    if (e.target.id !== "") setCurrentColor(e.target.id)
   }
+
+  // handle color change
+  useEffect( () => {
+      // update color history 
+      setColorHistory(updateColorHistory);
+
+      // update current code
+      setCurrentCode(updateCurrentCode);
+    },
+    [currentColor],
+  );
 
 
   useEffect( () => {
     if (currentRound < 10) {
-
-      // game logic with pegs
+      
 
     } 
     else {
