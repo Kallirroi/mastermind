@@ -18,6 +18,7 @@ function App() {
   // initialize current round
   let [currentRound, setCurrentRound] = useState(0);
 
+  // initialize current color
   let [currentColor, setCurrentColor] = useState('');
 
   // initialize colorHistory
@@ -36,7 +37,6 @@ function App() {
 
   const updateCurrentCode = () => {
     let lastFour=colorHistory.slice(-4).reverse()
-    console.log(lastFour)
     if (lastFour.length===4) return lastFour;
   } 
 
@@ -44,6 +44,21 @@ function App() {
   const handleColorChoice = (e) => {
     // push one letter to currentCode and always keep the last four
     if (e.target.id !== "") setCurrentColor(e.target.id)
+  }
+
+  const handleClear = () => {
+    setCurrentColor(''); 
+    setColorHistory([null, null, null, null]); 
+    setCurrentCode([null, null, null, null]);
+  }
+
+  const handleSubmit = () => {
+    setCurrentRound(currentRound+1); 
+
+    // how to keep track of old colors? 
+    setColorHistory([null, null, null, null]); 
+
+    setCurrentCode([null, null, null, null]);
   }
 
   // isolate effects on currentColor change
@@ -54,7 +69,7 @@ function App() {
       // update current code
       setCurrentCode(updateCurrentCode);
     },
-    [currentColor],
+    [currentColor]
   );
 
 
@@ -78,11 +93,11 @@ function App() {
       <Colors handleColorChoice={handleColorChoice}/> 
       <div className='buttons'> 
         <button disabled={currentCode.includes(null)} 
-          onClick={() => {setCurrentColor(''); setColorHistory([null, null, null, null]); setCurrentCode([null, null, null, null])} }> 
+          onClick={handleClear}> 
           Clear selection 
         </button>
         <button disabled={currentCode.includes(null)} 
-          onClick={() => {setCurrentRound(currentRound+1); setCurrentCode([null, null, null, null])} }> 
+          onClick={handleSubmit}> 
           Submit 
         </button>
       </div>      

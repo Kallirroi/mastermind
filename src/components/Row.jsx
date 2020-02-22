@@ -4,9 +4,9 @@ import "../styles/Row.css";
 
 function Row(props) {
 
-  const rowClass = props.active ? 'row active' : 'row';
+  const rowClass = props.active || props.played ? 'row active' : 'row';
   const currentCode = props.currentCode;
- 
+  console.log(props.played)
   return (
     <div className={rowClass}>
     {currentCode.map((round, i) => {     

@@ -13,11 +13,12 @@ function GameArea(props) {
 
   return (
     <div className="gameArea">
-      {rounds.map((round, i) => {     
+      {rounds.map((round,i) => {     
+        console.log(currentRound)
         return (
           <div key={i} className='round'> 
-            <Row currentCode={currentCode} active={i===currentRound ? true : false} /> 
-            <Pegs pegs={pegs} active={i===currentRound ? true : false} /> 
+            <Row currentCode={currentCode} played={i<currentRound ? true : false } active={i===currentRound ? true : false} /> 
+            <Pegs pegs={pegs}  active={i===currentRound ? true : false} /> 
           </div>) 
       })}
     </div>
