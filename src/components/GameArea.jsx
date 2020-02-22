@@ -16,8 +16,8 @@ function GameArea(props) {
       {rounds.map((round, i) => {     
         return (
           <div key={i} className='round'> 
-            <Row currentCode={currentCode} active={i===currentRound-1 ? true : false} /> 
-            <Pegs pegs={pegs} active={i===currentRound-1 ? true : false} /> 
+            <Row currentCode={currentCode} active={i===currentRound ? true : false} /> 
+            <Pegs pegs={pegs} active={i===currentRound ? true : false} /> 
           </div>) 
       })}
     </div>

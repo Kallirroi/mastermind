@@ -16,31 +16,43 @@ function App() {
   let rounds = initRounds();
 
   // initialize current round
-  let [currentRound, setCurrentRound] = useState(1);
+  let [currentRound, setCurrentRound] = useState(0);
 
+  // initialize colorHistory
+  let  [colorHistory, setColorHistory]=useState([null, null, null, null]);
+  
   // initialize currentCode
-  let  [currentCode, setCurrentCode]=useState(initComputerCode(colors));
+  let  [currentCode, setCurrentCode]=useState(colorHistory);
+  console.log(currentCode)
 
   // initialize pegs
   let [pegs, setPegs] = useState([null, null, null, null])
 
+  const updateColorHistory = (color) => {
+    debugger;
+    return colorHistory.push(color);
+  } 
+
+  const updateCurrentCode = () => {
+    let _colorHistory = colorHistory;
+    return _colorHistory.splice(1,4);
+  } 
+
+
   // detect color clicks on the Colors comp level
-  function handleColorChoice(e) {
-    let target = e;
-    console.log(target)
+  const handleColorChoice = (e) => {
+    // push one letter to currentCode and always keep the last four
+    setColorHistory(updateColorHistory(e.target.id))
+    setCurrentCode(updateCurrentCode);
+    
+    console.log(colorHistory, currentCode)
   }
-  
-  // with every click, push one letter to currentCode
+
 
   useEffect( () => {
     if (currentRound < 10) {
-      // choose four colors 
 
-      // update colored blocks in row 
-
-      // on submit we update pegs  
-
-      // on clear we reset the choice 
+      // game logic with pegs
 
     } 
     else {
@@ -53,10 +65,10 @@ function App() {
     <div className="App">
       <h1>Mastermind</h1>
       <p>Try to guess the pattern, in both order and color, within ten turns. After submitting a row, a small black peg is placed for each code peg from the guess which is correct in both color and position. A white peg indicates the existence of a correct color code peg placed in the wrong position. More info on <a href="https://en.wikipedia.org/wiki/Mastermind_(board_game)">Wikipedia</a>.</p>
-      <Colors onClick={handleColorChoice}/> 
+      <Colors handleColorChoice={handleColorChoice}/> 
       <div className='buttons'> 
-        <button onClick={() => setCurrentCode([null, null, null, null]) }> Clear selection </button>
-        <button onClick={() => setCurrentRound(currentRound+1) }> Submit </button>
+        <button disabled={currentCode.includes(null)} onClick={() => setCurrentCode([null, null, null, null]) }> Clear selection </button>
+        <button disabled={currentCode.includes(null)} onClick={() => {setCurrentRound(currentRound+1); setCurrentCode([null, null, null, null])} }> Submit </button>
       </div>      
       <GameArea currentCode={currentCode} rounds={rounds} currentRound={currentRound} pegs={pegs} />
     </div>
