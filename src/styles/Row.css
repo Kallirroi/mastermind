@@ -15,6 +15,26 @@
 	opacity: 0.4;
 }
 
+.row .choice.M {
+	background-color: #A64D71;
+}
+.row .choice.B {
+	background-color: #3A8FFA;
+}
+.row .choice.Y {
+	background-color: #E8CD4D;
+}
+.row .choice.G {
+	background-color: #7A9284;
+}
+.row .choice.P {
+	background-color: #af96cd;
+}
+.row .choice.O {
+	background-color: #fa9d7e;
+}
+
+
 .row.active .choice {
 	cursor: pointer;
 	opacity: 1;

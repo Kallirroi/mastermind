@@ -8,11 +8,17 @@ function GameArea(props) {
 
   const rounds = props.rounds;
   const currentRound = props.currentRound;
+  const pegs = props.pegs;
+  const currentCode = props.currentCode;
 
   return (
     <div className="gameArea">
-      {rounds.map((round, i) => {      
-        return (<div key={i} className="round"> <Row active={round===currentRound? true : false} /> <Pegs active={round===currentRound? true : false} /> </div>) 
+      {rounds.map((round, i) => {     
+        return (
+          <div key={i} className='round'> 
+            <Row currentCode={currentCode} active={i===currentRound-1 ? true : false} /> 
+            <Pegs pegs={pegs} active={i===currentRound-1 ? true : false} /> 
+          </div>) 
       })}
     </div>
   );

@@ -5,13 +5,13 @@ import "../styles/Pegs.css";
 function Pegs(props) {
   
   const pegsClass= props.active ? 'pegs active' : 'pegs'
+  const pegs = props.pegs;
 
   return (
     <div className={pegsClass}>
-      <div className='peg'></div>
-      <div className='peg'></div>
-      <div className='peg'></div>
-      <div className='peg'></div>
+      {pegs.map((peg,i) => {      
+        return (<div key={i} className={`peg ${peg}`}></div>) 
+      })}
     </div>
   );
 }
