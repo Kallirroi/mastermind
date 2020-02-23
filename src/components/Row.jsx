@@ -4,15 +4,21 @@ import "../styles/Row.css";
 
 function Row(props) {
 
-  const rowClass = props.active || props.played ? 'row active' : 'row';
   const currentCode = props.currentCode;
-  console.log(props.played)
+  const roundHistory = props.roundHistory;
+
   return (
-    <div className={rowClass}>
+    <div className='row'>
     {currentCode.map((round, i) => {     
+      console.log(roundHistory, roundHistory[0])
     	return props.active ? 
-    			(<div key={i} className={`choice ${currentCode[i]}`}></div>) 
-    			:(<div key={i} className='choice'></div>) 
+    			(
+            props.played ?  
+            (<div key={i} className={`choice played ${roundHistory[i]}`}></div>)
+            :
+            (<div key={i} className={`choice active ${currentCode[i]}`}></div>)
+          ) 
+    			:(<div key={i} className='choice willPlay'></div>) 
     })}
     </div>
   );

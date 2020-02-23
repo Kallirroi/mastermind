@@ -4,7 +4,7 @@ import "../styles/Pegs.css";
 
 function Pegs(props) {
   
-  const pegsClass= props.active ? 'pegs active' : 'pegs'
+  const pegsClass= props.active || props.played ? 'pegs active' : 'pegs'
   const pegs = props.pegs;
 
   return (

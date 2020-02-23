@@ -3,7 +3,6 @@
 }
 
 .row .choice {
-	background-color: #ccc;
 	width: 20px;
 	height: 20px;
 	display: inline-block;
@@ -11,29 +10,32 @@
 	border-radius: 3px;
 	vertical-align: top;
 	padding: 0;
+}
+
+.active, .played  {
+	opacity: 1;
+}
+
+.willPlay {
+	background-color: #ccc;
 	opacity: 0.4;
 }
 
-.row .choice.M {
+.M {
 	background-color: #A64D71;
 }
-.row .choice.B {
+.B {
 	background-color: #3A8FFA;
 }
-.row .choice.Y {
+.Y {
 	background-color: #E8CD4D;
 }
-.row .choice.G {
+.G {
 	background-color: #7A9284;
 }
-.row .choice.P {
+.P {
 	background-color: #af96cd;
 }
-.row .choice.O {
+.O {
 	background-color: #fa9d7e;
-}
-
-
-.row.active .choice {
-	opacity: 1;
 }

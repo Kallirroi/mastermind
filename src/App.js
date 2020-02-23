@@ -22,7 +22,10 @@ function App() {
   let [currentColor, setCurrentColor] = useState('');
 
   // initialize colorHistory
-  let  [colorHistory, setColorHistory]=useState([null, null, null, null]);
+  let  [colorHistory, setColorHistory]=useState([null, null, null, null]);  
+
+  // initialize roundHistory
+  let  [roundHistory, setRoundHistory]=useState([]);
   
   // initialize currentCode
   let  [currentCode, setCurrentCode]=useState([null, null, null, null]);
@@ -33,6 +36,11 @@ function App() {
   const updateColorHistory = () => {
     if (colorHistory !== undefined && currentColor !== "") colorHistory.push(currentColor);
     return colorHistory
+  }   
+
+  const updateRoundHistory = () => {
+    roundHistory.push(currentCode);
+    return roundHistory;
   } 
 
   const updateCurrentCode = () => {
@@ -54,10 +62,8 @@ function App() {
 
   const handleSubmit = () => {
     setCurrentRound(currentRound+1); 
-
-    // how to keep track of old colors? 
-    setColorHistory([null, null, null, null]); 
-
+    setRoundHistory(updateRoundHistory);
+    setColorHistory([null, null, null, null]);
     setCurrentCode([null, null, null, null]);
   }
 
@@ -68,9 +74,10 @@ function App() {
 
       // update current code
       setCurrentCode(updateCurrentCode);
+
     },
     [currentColor]
-  );
+  );  
 
 
   // isolate effects on currentRound change
@@ -101,7 +108,7 @@ function App() {
           Submit 
         </button>
       </div>      
-      <GameArea currentCode={currentCode} rounds={rounds} currentRound={currentRound} pegs={pegs} />
+      <GameArea roundHistory={roundHistory} currentCode={currentCode} rounds={rounds} currentRound={currentRound} pegs={pegs} />
     </div>
   );
 
