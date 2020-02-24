@@ -2,7 +2,7 @@
 	display: inline-block;
 }
 
-.row .choice {
+.choice {
 	width: 20px;
 	height: 20px;
 	display: inline-block;
@@ -12,13 +12,22 @@
 	padding: 0;
 }
 
-.active, .played  {
+.active {
+	background-color: #ccc;
 	opacity: 1;
 }
 
 .willPlay {
 	background-color: #ccc;
-	opacity: 0.4;
+	opacity: 0.3;
+}
+
+.played {
+	opacity: 1;
+}
+
+.ble {
+	background-color: #000;
 }
 
 .M {
