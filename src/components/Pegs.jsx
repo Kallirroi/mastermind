@@ -21,11 +21,9 @@ function Pegs(props) {
           result = 'white'
         }
 
-	      let playedClass = history[roundIndex] !== undefined ? 
-                          `peg played ${result}` 
-                          : null  
+	      let playedClass = history[roundIndex] !== undefined ?  `peg played ${result}` : null  
 
-	      let willPlayClass = 'peg willPlay'
+	      let willPlayClass = 'peg willPlay';
 
         return props.active ? 
           <div key={i} className={activeClass}></div>

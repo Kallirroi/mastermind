@@ -37,7 +37,8 @@ function App() {
   }   
 
   const updateRoundHistory = () => {
-    // update colors 
+   
+    // update color history
     roundHistory.colors.push(currentCode);
 
     // update pegs history 
@@ -52,9 +53,7 @@ function App() {
           result[i]=0;
         }
       }
-    console.log(roundHistory.pegs)
     }
-
     roundHistory.pegs.push(result);
 
     return roundHistory;
@@ -115,7 +114,7 @@ function App() {
       <h1>Mastermind</h1>
       <p>Try to guess the pattern, in both order and color, within ten turns. After submitting a row, a small black peg is placed for each code peg from the guess which is correct in both color and position. A white peg indicates the existence of a correct color code peg placed in the wrong position. More info on <a href="https://en.wikipedia.org/wiki/Mastermind_(board_game)">Wikipedia</a>.</p>
       
-      <Colors handleColorChoice={handleColorChoice}/> 
+      <Colors handleColorChoice={handleColorChoice} colors={colors}/> 
       
       <div className='buttons'> 
         <button 
