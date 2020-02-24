@@ -13,10 +13,10 @@ function App() {
   let computerCode = initComputerCode(colors);
 
   // initialize rounds array
-  let rounds = initRounds();
-
+  const rounds = [1,0,0,0,0,0,0,0,0,0,]
+  
   // initialize current round
-  let [currentRound, setCurrentRound] = useState(0);
+  let [currentRound, setCurrentRound] = useState(1);
 
   // initialize current color
   let [currentColor, setCurrentColor] = useState('');
@@ -39,7 +39,6 @@ function App() {
   }   
 
   const updateRoundHistory = () => {
-    console.log('yo')
     roundHistory.push(currentCode);
     return roundHistory;
   } 

@@ -4,7 +4,6 @@ import "../styles/Pegs.css";
 
 function Pegs(props) {
   
-  const pegsClass= props.active || props.played ? 'pegs active' : 'pegs'
   const pegs = props.pegs;
 
   return (
@@ -13,7 +12,6 @@ function Pegs(props) {
 	      let activeClass = 'peg active'
 	      
 	      let playedClass = 'peg played'    
-
 
 	      let willPlayClass = 'peg willPlay'
 

@@ -15,11 +15,14 @@ function GameArea(props) {
   return (
     <div className="gameArea">
       {rounds.map((round,i) => {     
-        let played =  i < currentRound ? true : false;
-        let active =  i === currentRound ? true : false;
+
+        let played =  i < currentRound-1 ? true : false;
+        let active =  i === currentRound-1 ? true : false;
+
         return (
           <div key={i} className={'round'}> 
             <Row 
+              roundIndex={i}
               currentRound={currentRound} 
               roundHistory={roundHistory} 
               currentCode={currentCode} 

@@ -1,6 +1,6 @@
 export const initRounds = () => { 
   let rounds=[1];
-  for (var i = 8; i >= 0; i--) {
+  for (var i = 9; i > 0; i--) {
     rounds.push(0);
   }
   return rounds
