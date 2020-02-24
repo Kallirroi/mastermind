@@ -18,9 +18,17 @@ function GameArea(props) {
         let played =  i < currentRound ? true : false;
         let active =  i === currentRound ? true : false;
         return (
-          <div key={i} className='round'> 
-            <Row currentRound={currentRound} roundHistory={roundHistory} currentCode={currentCode} played={played} active={active} /> 
-            <Pegs pegs={pegs} played={played} active={active} /> 
+          <div key={i} className={'round'}> 
+            <Row 
+              currentRound={currentRound} 
+              roundHistory={roundHistory} 
+              currentCode={currentCode} 
+              played={played} 
+              active={active} /> 
+            <Pegs 
+              pegs={pegs} 
+              played={played} 
+              active={active} /> 
           </div>) 
       })}
     </div>

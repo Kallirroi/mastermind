@@ -14,10 +14,7 @@ function Row(props) {
 
       let activeClass = `choice active ${currentCode[i]}` 
       
-      let playedClass = roundHistory[currentRound] !== undefined ? 
-                `choice played ${roundHistory[currentRound][i]}` 
-                : 'choice active ble'      
-
+      let playedClass = `choice played ${roundHistory[currentRound-1][i]}`
 
       let willPlayClass = 'choice willPlay'
 
