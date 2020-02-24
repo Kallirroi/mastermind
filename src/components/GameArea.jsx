@@ -7,11 +7,11 @@ import "../styles/GameArea.css";
 function GameArea(props) {
 
   const rounds = props.rounds;
+  const pegs = props.pegs;
   const currentRound = props.currentRound;
   const roundHistory = props.roundHistory;
-  const pegs = props.pegs;
   const currentCode = props.currentCode;
- 
+  
   return (
     <div className="gameArea">
       {rounds.map((round,i) => {     
@@ -23,13 +23,13 @@ function GameArea(props) {
           <div key={i} className={'round'}> 
             <Row 
               roundIndex={i}
-              currentRound={currentRound} 
-              roundHistory={roundHistory} 
+              history={roundHistory.colors} 
               currentCode={currentCode} 
               played={played} 
               active={active} /> 
             <Pegs 
-              pegs={pegs} 
+              pegs={pegs}
+              history={roundHistory.pegs} 
               played={played} 
               active={active} /> 
           </div>) 

@@ -13,12 +13,12 @@
 }
 
 .active {
-	background-color: #ccc;
+	background-color: #aaa;
 	opacity: 1;
 }
 
 .willPlay {
-	background-color: #ccc;
+	background-color: #aaa;
 	opacity: 0.3;
 }
 

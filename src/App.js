@@ -2,7 +2,7 @@ import React, {useState, useEffect } from "react";
 import GameArea from './components/GameArea'
 import Colors from './components/Colors'
 
-import {initRounds, initComputerCode} from './Utils'
+import {initArray, initComputerCode} from './Utils'
 
 import "./styles/App.css";
 
@@ -13,8 +13,9 @@ function App() {
   let computerCode = initComputerCode(colors);
 
   // initialize rounds array
-  const rounds = [1,0,0,0,0,0,0,0,0,0,]
-  
+  const rounds = initArray(10);
+  const pegs = initArray(4);
+
   // initialize current round
   let [currentRound, setCurrentRound] = useState(1);
 
@@ -24,14 +25,11 @@ function App() {
   // initialize colorHistory
   let  [colorHistory, setColorHistory]=useState([null, null, null, null]);  
 
-  // initialize roundHistory
-  let  [roundHistory, setRoundHistory]=useState([]);
+  // initialize roundHistory for colors and pegs
+  let  [roundHistory, setRoundHistory]=useState({colors: [], pegs: []});
   
   // initialize currentCode
   let  [currentCode, setCurrentCode]=useState([null, null, null, null]);
-
-  // initialize pegs
-  let [pegs, setPegs] = useState([null, null, null, null])
 
   const updateColorHistory = () => {
     if (colorHistory !== undefined && currentColor !== "") colorHistory.push(currentColor);
@@ -39,14 +37,23 @@ function App() {
   }   
 
   const updateRoundHistory = () => {
-    roundHistory.push(currentCode);
+    // update colors 
+    roundHistory.colors.push(currentCode);
+
+    // update pegs 
+    roundHistory.pegs.push([1,0,0,1]);
+
     return roundHistory;
   } 
 
   const updateCurrentCode = () => {
-    let lastFour=colorHistory.slice(-4).reverse()
+    let lastFour=colorHistory.slice(-4).reverse();
     if (lastFour.length===4) return lastFour;
   } 
+
+  const updatePegs = () => {
+    // peg logic here
+  }
 
   // detect color clicks on the Colors comp level
   const handleColorChoice = (e) => {
@@ -68,7 +75,7 @@ function App() {
     setCurrentCode([null, null, null, null]);
   }
 
-  // isolate effects on currentColor change
+  // isolate effects on currentColor 
   useEffect( () => {
       // update color history 
       setColorHistory(updateColorHistory);
@@ -80,12 +87,11 @@ function App() {
   );  
 
 
-  // isolate effects on currentRound change
+  // isolate effects on currentRound 
   useEffect( () => {
-      if (currentRound < 10) {
-        // keep playing
-      } 
-      else {
+
+      // check for victory or loss after we have played all rounds
+      if (currentRound > 10)  {
         currentCode === computerCode ? alert('you won!') : alert('you lost :(');
         window.location.reload();
       }
@@ -103,7 +109,7 @@ function App() {
       
       <div className='buttons'> 
         <button 
-          disabled={currentCode.includes(null)} 
+          disabled={currentColor === ''} 
           onClick={handleClear}> 
           Clear selection 
         </button>
@@ -118,8 +124,8 @@ function App() {
       roundHistory={roundHistory} 
       currentCode={currentCode} 
       rounds={rounds} 
-      currentRound={currentRound} 
-      pegs={pegs} />
+      pegs={pegs}
+      currentRound={currentRound}/>
     </div>
   );
 

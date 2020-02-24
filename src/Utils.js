@@ -1,9 +1,9 @@
-export const initRounds = () => { 
-  let rounds=[1];
-  for (var i = 9; i > 0; i--) {
-    rounds.push(0);
+export const initArray = (number) => { 
+  let array=[1];
+  for (var i = number-1; i > 0; i--) {
+    array.push(0);
   }
-  return rounds
+  return array
 }
 
 export const initComputerCode = (colors) => {
