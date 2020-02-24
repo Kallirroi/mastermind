@@ -29,7 +29,7 @@ function App() {
   let  [roundHistory, setRoundHistory]=useState({colors: [], pegs: []});
   
   // initialize currentCode
-  let  [currentCode, setCurrentCode]=useState([null, null, null, null]);
+  let  [currentCode, setCurrentCode]=useState([null, null, null, null]);  
 
   const updateColorHistory = () => {
     if (colorHistory !== undefined && currentColor !== "") colorHistory.push(currentColor);
@@ -40,8 +40,22 @@ function App() {
     // update colors 
     roundHistory.colors.push(currentCode);
 
-    // update pegs 
-    roundHistory.pegs.push([1,0,0,1]);
+    // update pegs history 
+    let result=[null,null,null,null];
+    for (var i = 0; i < currentCode.length; i++) {
+      let doesColorMatch = computerCode.indexOf(currentCode[i]);
+      if (doesColorMatch !== -1 ) { 
+        if ( doesColorMatch === i) {
+          result[i]=1;
+          }
+        else {
+          result[i]=0;
+        }
+      }
+    console.log(roundHistory.pegs)
+    }
+
+    roundHistory.pegs.push(result);
 
     return roundHistory;
   } 
@@ -50,10 +64,6 @@ function App() {
     let lastFour=colorHistory.slice(-4).reverse();
     if (lastFour.length===4) return lastFour;
   } 
-
-  const updatePegs = () => {
-    // peg logic here
-  }
 
   // detect color clicks on the Colors comp level
   const handleColorChoice = (e) => {

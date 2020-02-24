@@ -11,6 +11,7 @@ function GameArea(props) {
   const currentRound = props.currentRound;
   const roundHistory = props.roundHistory;
   const currentCode = props.currentCode;
+  const currentPegScore = props.currentPegScore;
   
   return (
     <div className="gameArea">
@@ -24,12 +25,14 @@ function GameArea(props) {
             <Row 
               roundIndex={i}
               history={roundHistory.colors} 
-              currentCode={currentCode} 
+              currentCode={currentCode}
               played={played} 
               active={active} /> 
             <Pegs 
               pegs={pegs}
+              roundIndex={i}
               history={roundHistory.pegs} 
+              currentPegScore={currentPegScore}
               played={played} 
               active={active} /> 
           </div>) 

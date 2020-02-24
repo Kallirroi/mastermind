@@ -1,10 +1,9 @@
 .pegs {
 	display: inline-block;
 	vertical-align: top;
-	opacity: 0.4;
 }
 
-.pegs.active {
+.pegs .active , .pegs .played {
 	opacity: 1;
 }
 
@@ -19,9 +18,10 @@
 	border-radius: 6px;
 }
 
-.peg.white {
+.white {
 	background-color: #fff !important;
 }
-.peg.black {
-	background-color: #000;
+
+.black {
+	background-color: #000 !important;
 }
