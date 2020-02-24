@@ -13,7 +13,7 @@ function Row(props) {
     <div className='row'>
     {currentCode.map((round, i) => {     
       let activeClass = `choice active ${currentCode[i]}` 
-      let playedClass = roundHistory[currentRound-roundIndex-2] !== undefined ? `choice played ${roundHistory[currentRound-roundIndex-2][i]}` : null
+      let playedClass = roundHistory[roundIndex] !== undefined ? `choice played ${roundHistory[roundIndex][i]}` : null
 
       let willPlayClass = 'choice willPlay'
 
