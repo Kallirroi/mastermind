@@ -78,36 +78,31 @@ function App() {
   }
 
 
-  const buttonClickHandler = () => {
-    setDidClickButton(true)
+  const buttonClickHandler = (e) => {
+    e.preventDefault();
+    
+    // trigger useEffect on didClickButton    
+    setDidClickButton(true);
+    
+    // save the chosen letter to currentColor array
+    if (e.target.id !== "") setCurrentColor(e.target.id);
   }
 
-  const mouseClickHandler = (e) => {
-    e.preventDefault();
-    // push one letter to currentCode and always keep the last four
-    if (e.target.id !== "") setCurrentColor(e.target.id);
-    setDidClickButton(false) // If you want to reset the behavior again
-  }
 
   // isolate clicking effects
   useEffect(() => {
 
     if (didClickButton) {
-      document.addEventListener("click", mouseClickHandler)
-      
+      console.log('click')
+
       // update current code
       setCurrentCode(updateCurrentCode);
-
-      // update color history 
-      setColorChoices(updateColorChoices);
       
-      console.log(currentColor, currentCode)
-
-      return () => {
-        document.removeEventListener("click", mouseClickHandler)
-      }
-    } else {
-      document.removeEventListener("click", mouseClickHandler)
+      // update color history 
+      setColorChoices(updateColorChoices);  
+      
+      // reset didClickButton variable
+      setDidClickButton(false);
     }
   }, [didClickButton])   
 
