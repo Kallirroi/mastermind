@@ -8,7 +8,7 @@
 }
 
 .peg {
-	background-color: #aaa;
+	background-color: #fff;
 	border: 1px solid #aaa;
 	width: 6px;
 	height: 6px;
@@ -18,10 +18,10 @@
 	border-radius: 6px;
 }
 
-.white {
-	background-color: #fff !important;
+.maybe {
+	background-color: #aaa !important;
 }
 
-.black {
-	background-color: #000 !important;
+.definitely {
+	background-color: #00f !important;
 }

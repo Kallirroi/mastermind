@@ -5,9 +5,9 @@ import "../styles/Colors.css";
 function Colors(props)  {
 	const colors = props.colors;
 	return ( 
-		<div onClick={props.handleColorChoice} className='colors'>
+		<div className='colors'>
 		{colors.map((color, i) => {     
-			return <div key={color} id={color} className={`color ${color}`}></div>
+			return <div onClick={props.handleColorChoice}  key={color} id={color} className={`color ${color}`}></div>
 	    })}
 		</div>
 	);

@@ -15,10 +15,10 @@ function Pegs(props) {
 
         let result;
         if (history[roundIndex] !== undefined && history[roundIndex][i] === 1) {
-          result = 'black'
+          result = 'definitely'
         }
         else if ( history[roundIndex] !== undefined  && history[roundIndex][i] === 0) {
-          result = 'white'
+          result = 'maybe'
         }
 
 	      let playedClass = history[roundIndex] !== undefined ?  `peg played ${result}` : null  

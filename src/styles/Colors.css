@@ -3,6 +3,7 @@
 	vertical-align: top;
 	height: 20px;
 	text-align: center;
+	margin: 50px 0 20px 0;
 }
 
 .color {
@@ -19,20 +20,20 @@
 }
 
 .M {
-	background-color: #A64D71;
+	background-color: #AF1FB5;
 }
 .B {
-	background-color: #3A8FFA;
+	background-color: #41c8e2;
 }
 .Y {
-	background-color: #E8CD4D;
+	background-color: #EEE506;
 }
 .G {
-	background-color: #7A9284;
+	background-color: #23ED9B;
 }
 .P {
-	background-color: #af96cd;
+	background-color: #f499fc;
 }
 .O {
-	background-color: #fa9d7e;
+	background-color: #FEAB0A;
 }
