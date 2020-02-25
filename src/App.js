@@ -10,14 +10,10 @@ import "./styles/App.css";
 // set random code (computer)
 const colors = ['M', 'B', 'Y', 'G', 'P', 'O'];
 const computerCode = initComputerCode(colors);
-
+console.log(computerCode)
 // initialize rounds and pegs arrays
 const rounds = initArray(10);
 const pegs = initArray(4);
-
-// detect win
-let winFlag = false;
-
 
 function App() {
 
@@ -36,7 +32,11 @@ function App() {
   // initialize currentCode
   const  [currentCode, setCurrentCode]=useState([null, null, null, null]);  
 
+  // handle button click detection
   const [didClickButton, setDidClickButton] = useState(false);
+
+  // handle win detection
+  const [winFlag, setWinFlag] = useState(false);
   
   const updateColorChoices = () => {
     if (colorChoices !== undefined && currentColor !== "") colorChoices.push(currentColor);
@@ -50,10 +50,11 @@ function App() {
 
     // update pegs history using the rules of the game
     let result = pegsLogic(currentCode, computerCode);
+
+    // check if the user has found the correct code -- I KNOW THIS IS NOT CLEAN
+    if (JSON.stringify(result) === JSON.stringify([1,1,1,1])) setWinFlag(true);
+
     roundHistory.pegs.push(result);
-    
-    // check if the user has found the correct code
-    if (result === [1,1,1,1]) winFlag = true;
     
     return roundHistory;
   } 
@@ -93,8 +94,6 @@ function App() {
   useEffect(() => {
 
     if (didClickButton) {
-      console.log('click')
-
       // update current code
       setCurrentCode(updateCurrentCode);
       
@@ -110,6 +109,7 @@ function App() {
   // isolate effects on currentRound 
   useEffect( () => {
       // check for victory or loss after we have played all rounds
+      console.log('winflag', winFlag)
       if (winFlag) {
         alert('you won!')
         window.location.reload();
@@ -128,7 +128,7 @@ function App() {
     <div className="App">
       
       <h1>Mastermind</h1>
-      <p>Try to guess the pattern, in both order and color, within ten turns. After submitting a row, a black peg is placed for each code peg from the guess which is correct in both color and position. A white peg indicates the existence of a correct color code peg placed in the wrong position. More info on <a href="https://en.wikipedia.org/wiki/Mastermind_(board_game)">Wikipedia</a>.</p>
+      <p>Try to guess the pattern, in both order and color, within ten turns. After submitting a row, a black peg indicates a guess which is correct in both color and position. A white peg indicates a guess which is correct about the color but wrong about the position. More info on <a href="https://en.wikipedia.org/wiki/Mastermind_(board_game)" target='_blank'>Wikipedia</a>.</p>
 
       <Colors handleColorChoice={buttonClickHandler} colors={colors}/> 
       
@@ -152,7 +152,7 @@ function App() {
       pegs={pegs}
       currentRound={currentRound}/>
 
-      <div className='credits'>Made by <a href="kalli-retzepi.com">Kalli</a> during her time at the <a href="https://www.recurse.com/">Recurse Center</a>.</div>
+      <div className='credits'>Made by <a href="https://kalli-retzepi.com/" target='_blank'>Kalli</a> during her time at the <a href="https://www.recurse.com/" target='_blank'>Recurse Center</a>.</div>
     </div>
   );
 

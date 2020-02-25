@@ -7,7 +7,7 @@ function Colors(props)  {
 	return ( 
 		<div className='colors'>
 		{colors.map((color, i) => {     
-			return <div onClick={props.handleColorChoice}  key={color} id={color} className={`color ${color}`}></div>
+			return <div onClick={props.handleColorChoice} key={color} id={color} className={`color ${color}`}></div>
 	    })}
 		</div>
 	);
