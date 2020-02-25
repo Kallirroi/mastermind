@@ -109,7 +109,6 @@ function App() {
   // isolate effects on currentRound 
   useEffect( () => {
       // check for victory or loss after we have played all rounds
-      console.log('winflag', winFlag)
       if (winFlag) {
         alert('you won!')
         window.location.reload();
@@ -154,7 +153,7 @@ function App() {
         currentRound={currentRound}/>
 
         <div className='credits'>Made by <a href="https://kalli-retzepi.com/" target='_blank'>Kalli</a> during her time at the <a href="https://www.recurse.com/" target='_blank'>Recurse Center</a>.</div>
-      </div>
+    </div>
     </div>
   );
 
