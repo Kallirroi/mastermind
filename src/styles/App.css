@@ -5,16 +5,25 @@ body {
   font-size: 1.2rem;
 }
 
-h1 {
-	text-align: center;
-	font-size: 4rem;
-	font-weight: 200;
+.play {
+	opacity: 1;
+}
+
+.win {
+	opacity: 0.4;
 }
 
 .App {
 	width: 40vw;
 	margin: 0 auto;
 }
+
+h1 {
+	text-align: center;
+	font-size: 4rem;
+	font-weight: 200;
+}
+
 
 .buttons {
 	display: block;

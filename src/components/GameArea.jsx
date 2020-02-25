@@ -12,9 +12,9 @@ function GameArea(props) {
   const roundHistory = props.roundHistory;
   const currentCode = props.currentCode;
   const currentPegScore = props.currentPegScore;
-  
+
   return (
-    <div className="gameArea">
+    <div className='gameArea'>
       {rounds.map((round,i) => {     
 
         let played =  i < currentRound-1 ? true : false;
