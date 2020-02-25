@@ -3,13 +3,17 @@
 	vertical-align: top;
 }
 
-.pegs .active , .pegs .played {
+.pegs .active {
+	opacity: 1;
+}
+
+.pegs .played {
 	opacity: 1;
 }
 
 .peg {
-	background-color: #fff;
-	border: 1px solid #aaa;
+	background-color: #aaa;
+	border: 1px solid #000;
 	width: 6px;
 	height: 6px;
 	display: inline-block;
@@ -19,9 +23,9 @@
 }
 
 .maybe {
-	background-color: #aaa !important;
+	background-color: #fff !important;
 }
 
 .definitely {
-	background-color: #00f !important;
+	background-color: #000 !important;
 }

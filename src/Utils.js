@@ -13,3 +13,21 @@ export const initComputerCode = (colors) => {
   } 
   return result;
 }
+
+export const pegsLogic = (currentCode, computerCode) => {
+
+  let result=[null,null,null,null];
+  for (var i = 0; i < currentCode.length; i++) {
+    let isColorIncluded = computerCode.includes(currentCode[i]);
+
+    if (isColorIncluded) { 
+      if ( currentCode[i] === computerCode[i]) {
+        result[i]=1;
+        }
+      else {
+        result[i]=0;
+      }
+    }
+  }
+  return result;
+}
