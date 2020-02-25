@@ -11,14 +11,14 @@ import "./styles/App.css";
 const colors = ['M', 'B', 'Y', 'G', 'P', 'O'];
 const computerCode = initComputerCode(colors);
 
-// initialize rounds array
+// initialize rounds and pegs arrays
 const rounds = initArray(10);
 const pegs = initArray(4);
 
+// detect win
 let winFlag = false;
 
 function App() {
-  console.log(computerCode)
 
   // initialize current round
   let [currentRound, setCurrentRound] = useState(1);
@@ -47,6 +47,7 @@ function App() {
 
     // update pegs history 
     let result=[null,null,null,null];
+
     for (var i = 0; i < currentCode.length; i++) {
       let isColorIncluded = computerCode.includes(currentCode[i]);
 
@@ -60,7 +61,7 @@ function App() {
       }
     }
     roundHistory.pegs.push(result);
-    if (result = [1,1,1,1]) winFlag = true;
+    if (result === [1,1,1,1]) winFlag = true;
     return roundHistory;
   } 
 
